@@ -1,0 +1,70 @@
+# --- Python ---
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# --- Virtual environments ---
+.venv/
+venv/
+env/
+ENV/
+
+# --- Build / distribution ---
+build/
+dist/
+*.egg-info/
+*.egg
+wheels/
+.eggs/
+
+# --- Tooling caches ---
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+.coverage.*
+htmlcov/
+coverage.xml
+.tox/
+.nox/
+
+# --- uv ---
+.uv/
+
+# --- IDEs / editors ---
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# --- OS ---
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+
+# --- Project: local runtime data ---
+.lattice/
+*.db
+*.db-journal
+*.db-wal
+*.db-shm
+
+# --- Project: secrets / config ---
+.env
+.env.*
+!.env.example
+config.local.*
+secrets/
+
+# --- Project: generated artifacts ---
+*.log
+logs/
+
+# --- Jupyter (if you use notebooks during exploration) ---
+.ipynb_checkpoints/
+*.ipynb_meta

@@ -1,0 +1,25 @@
+[project]
+name = "whisper"
+version = "0.0.1"
+description = "Whisper — chat app built on Lattice"
+requires-python = ">=3.12"
+dependencies = [
+  "lattice",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8.3",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/whisper"]
+
+[tool.uv.sources]
+# Tell uv that whisper"s `lattice` dep resolves to the workspace member,
+# not PyPI. Standard pattern for monorepos.
+lattice = { workspace = true }

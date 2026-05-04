@@ -1,0 +1,76 @@
+[project]
+name = "aether"
+version = "0.0.0"
+description = "aether"
+requires-python = ">=3.12"
+# No dependencies here — all real deps are declared in member packages.
+dependencies = []
+
+# --- uv workspace ---
+[tool.uv.workspace]
+members = ["packages/*"]
+
+# --- Ruff (lint + format) ---
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+extend-exclude = [
+  ".venv",
+  "build",
+  "dist",
+]
+
+[tool.ruff.lint]
+select = [
+  "E",    # pycodestyle errors
+  "W",    # pycodestyle warnings
+  "F",    # pyflakes
+  "I",    # isort (import sorting)
+  "B",    # bugbear (catches real bugs)
+  "UP",   # pyupgrade (modernize syntax for target version)
+  "N",    # pep8 naming
+  "RUF",  # ruff-specific rules
+  "SIM",  # simplify (suggests cleaner code)
+  "TID",  # tidy imports
+]
+[tool.ruff.lint.per-file-ignores]
+"**/api/*.py" = ["B008"]  
+"**/tests/*.py" = ["B017"] 
+
+[tool.ruff.format]
+quote-style = "single"
+indent-style = "space"
+
+# --- mypy (type checking) ---
+[tool.mypy]
+python_version = "3.12"
+strict = true
+warn_unused_configs = true
+warn_redundant_casts = true
+warn_unused_ignores = true
+warn_return_any = true
+no_implicit_reexport = true
+
+# --- pytest ---
+[tool.pytest.ini_options]
+minversion = "8.0"
+addopts = [
+  "-ra",                
+  "--strict-markers",  
+  "--strict-config",   
+]
+testpaths = ["packages"]
+asyncio_mode = "auto" 
+
+# --- coverage.py ---
+[tool.coverage.run]
+branch = true
+source = ["packages"]
+
+[tool.coverage.report]
+exclude_lines = [
+  "pragma: no cover",
+  "raise NotImplementedError",
+  "if TYPE_CHECKING:",
+  "if __name__ == .__main__.:",
+]
